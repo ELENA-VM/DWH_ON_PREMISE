@@ -1,0 +1,8 @@
+INSERT INTO bl_3nf.ce_books(BOOK_ID, BOOK_SRC_ID, SOURCE_SYSTEM, SOURCE_ENTITY, ISBN, PUBLISHER, BOOK_TITLE,
+                            YEAR_OF_PUBLICATION, AUTHOR_ID, SUB_CATEGORY_SURR_ID, START_DT, END_DT, IS_ACTIVE, UPDATE_DT, INSERT_DT) 
+SELECT -1, -1, 'NA', 'NA', 'NA', 'NA', 'NA', -1, -1, -1, TO_DATE('01011970', 'MMDDYYYY'), TO_DATE('01019999', 'MMDDYYYY'), 'yes', sysdate, sysdate
+FROM dual
+WHERE NOT EXISTS ( SELECT BOOK_ID
+                   FROM bl_3nf.ce_books
+                   WHERE BOOK_ID = -1 );
+COMMIT;
